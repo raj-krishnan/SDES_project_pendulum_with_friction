@@ -23,7 +23,7 @@ clean:
 	rm -rf output/
 
 view:
-	evince output/report.pdf
+	evince output/140010007.pdf
 
 animations: source/time_animation.py source/coordinate_animation.py
 	mkdir -p source/build/
