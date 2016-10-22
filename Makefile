@@ -24,10 +24,14 @@ view:
 animations: source/time_animation.py source/coordinate_animation.py
 	python source/coordinate_animation.py
 	python source/time_animation.py
+	mv coordinate_animation.mp4 output/
+	mv time_animation.mp4 output/
 
 plots: source/plot_theta_theta_dash.py source/plot_theta_time.py
 	python source/plot_theta_theta_dash.py
 	python source/plot_theta_time.py
+	mv pendulum.png output/
+	mv theta_vs_theta_dash.png output/
 
 source/report.pdf : source/report.tex source/report.bbl source/report.blg
 	$(CD) $(TEX) report.tex
