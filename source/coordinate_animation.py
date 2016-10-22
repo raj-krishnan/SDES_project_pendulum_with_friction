@@ -24,8 +24,8 @@ y_coord = [(1-math.cos(position)) for position, velocity in trajectory]
 def init():
     pendulum_bob.set_data([], [])
     plt.title("Damped Pendulum Motion")
-    plt.xlabel("X")
-    plt.ylabel("Y")
+    plt.xlabel("X", fontsize=13, family='monospace')
+    plt.ylabel("Y", fontsize=13, family='monospace')
     return pendulum_bob,
 
 

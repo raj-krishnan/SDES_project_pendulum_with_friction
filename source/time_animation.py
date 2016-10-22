@@ -24,9 +24,9 @@ y_dash = [velocity for position, velocity in trajectory]
 
 def init():
     theta_line.set_data([], [])
-    plt.xlabel("Time")
-    plt.ylabel("Angular Displacement, Angular Velocity")
-    plt.title("Angular Displacement and Angular Velocity v/s Time")
+    plt.xlabel("Time", fontsize=13, family='monospace')
+    plt.ylabel("Angular Displacement, Angular Velocity", fontsize=13, family='monospace')
+    plt.title("Angular Displacement and Angular Velocity v/s Time", fontsize=13, family='monospace')
     blue_line = mlines.Line2D([], [], color='green',
                               markersize=15, label='Theta')
     green_line = mlines.Line2D([], [], color='blue',

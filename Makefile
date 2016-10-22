@@ -3,10 +3,10 @@ TEX = pdflatex -shell-escape -interaction=nonstopmode -file-line-error
 PRE =  $(TEX) -ini -job-name="preamble" "&pdflatex preamble.tex\dump"
 BIB = bibtex
 
-.PHONY: all view clean animations plots
+.PHONY: all view clean animations plots test
 
 all : source/report.pdf
-	mkdir -p output
+	mkdir -p output/resources
 	rm -f source/report.aux
 	rm -f source/report.bbl
 	rm -f source/report.blg
@@ -14,8 +14,9 @@ all : source/report.pdf
 	rm -f source/report.log
 	rm -f source/report.run.xml
 	rm -f source/report.out
-	mv source/report.pdf output/report.pdf
-	mv source/build/* output
+	mv source/report.pdf output/140010007.pdf
+	mv source/build/* output/resources
+	cp source/animation.html output/140010007.html
 	rm -rf source/build/
 
 clean:
@@ -37,6 +38,9 @@ plots: source/plot_theta_theta_dash.py source/plot_theta_time.py
 	python source/plot_theta_time.py
 	mv pendulum.png source/build/
 	mv theta_vs_theta_dash.png source/build/
+
+test:
+	$(CD) nosetests
 
 source/report.pdf : animations plots source/report.tex source/report.bbl source/report.blg
 # source/report.pdf : source/report.tex source/report.bbl source/report.blg

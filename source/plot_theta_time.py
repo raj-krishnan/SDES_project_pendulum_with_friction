@@ -42,8 +42,8 @@ plot_underdamped_pendulum()
 plot_overdamped_pendulum()
 plot_critically_damped_pendulum()
 
-plt.xlabel("Time")
-plt.ylabel("Angular Displacement")
+plt.xlabel("Time", fontsize=13, family='monospace')
+plt.ylabel("Angular Displacement",fontsize=13, family='monospace')
 
 red_line = mlines.Line2D([], [], color='red',
                           markersize=15, label='Underdamped Pendulum')

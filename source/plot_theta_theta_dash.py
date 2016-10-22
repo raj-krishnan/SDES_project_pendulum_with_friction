@@ -15,9 +15,9 @@ def plot_theta_vs_theta_dash():
 
 plot_theta_vs_theta_dash()
 
-plt.xlabel("Angular Displacement")
-plt.ylabel("Angular Velocity")
-plt.title("Angular Displacement v/s Angular Velocity")
+plt.xlabel("Angular Displacement", fontsize=13, family='monospace')
+plt.ylabel("Angular Velocity", fontsize=13, family='monospace')
+plt.title("Angular Displacement v/s Angular Velocity", fontsize=13, family='monospace')
 
 plt.savefig("theta_vs_theta_dash.png")
 # plt.show()
