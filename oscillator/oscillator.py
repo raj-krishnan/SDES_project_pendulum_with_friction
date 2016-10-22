@@ -14,7 +14,7 @@ class Oscillator:
     def __init__(self, state=(5 * math.pi / 180, 0), alpha=1.0, radius=1.0):
         allowed_types = [int, float]
 
-        if type(c) not in allowed_types \
+        if type(alpha) not in allowed_types \
                 or type(radius) not in allowed_types \
                 or type(state[0]) not in allowed_types \
                 or type(state[1]) not in allowed_types:
@@ -30,7 +30,7 @@ class Oscillator:
     def get_derivative(self, state, t):
         theta_dash = state[1]
         theta_ddash = - self.alpha * state[1] - (constants.g * state[0]) / self.radius
-        return [omega, alpha]
+        return [theta_dash, theta_ddash]
 
     def update_state(self, time_step):
         self.state = integrate.odeint(self.get_derivative,

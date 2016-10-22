@@ -1,5 +1,5 @@
-.pdf
-.mp4
+*.pdf
+*.mp4
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

@@ -15,7 +15,7 @@ class TestOscillator(unittest.TestCase):
                              list(oscillator.get_trajectory(0, 1)[0]))
 
     def test_amplitude_decreases_when_friction_present(self):
-        oscillator = Oscillator(c=1.0, radius=1.0)
+        oscillator = Oscillator(alpha=1.0, radius=1.0)
         self.assertTrue(oscillator.state[0]
                         > oscillator.get_trajectory(10.0, 500)[-1][0])
 
