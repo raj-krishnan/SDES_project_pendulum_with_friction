@@ -7,11 +7,11 @@ import scipy.integrate as integrate
 class Oscillator:
     """
     Variable: theta
-    First Derivative: omega
-    Second Derivative: alpha
+    First Derivative: theta_dash
+    Second Derivative: theta_ddash
     """
 
-    def __init__(self, state=(5 * math.pi / 180, 0), c=1.0, radius=1.0):
+    def __init__(self, state=(5 * math.pi / 180, 0), alpha=1.0, radius=1.0):
         allowed_types = [int, float]
 
         if type(c) not in allowed_types \
@@ -23,13 +23,13 @@ class Oscillator:
         if len(state) != 2:
             raise TypeError("Expected list of length 2")
 
-        self.c = c
+        self.alpha = alpha
         self.radius = radius
         self.state = list(state)
 
     def get_derivative(self, state, t):
-        omega = state[1]
-        alpha = (- self.c * state[1] - constants.g * state[0]) / self.radius
+        theta_dash = state[1]
+        theta_ddash = - self.alpha * state[1] - (constants.g * state[0]) / self.radius
         return [omega, alpha]
 
     def update_state(self, time_step):
@@ -45,9 +45,10 @@ class Oscillator:
             self.state = initial_state
 
         y = [numpy.asarray(self.state)]
-
+        # y = [self.state[0]]
         for i in range(simulation_steps):
             print("Iteration: " + str(i + 1))
             self.update_state(simulation_time / simulation_steps)
             y.append(self.state)
         return y
+
