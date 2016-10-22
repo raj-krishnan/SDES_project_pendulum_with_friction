@@ -29,7 +29,8 @@ class Oscillator:
 
     def get_derivative(self, state, t):
         theta_dash = state[1]
-        theta_ddash = - self.alpha * state[1] - (constants.g * state[0]) / self.radius
+        theta_ddash = -(self.alpha * state[1]
+                        + (constants.g * state[0]) / self.radius)
         return [theta_dash, theta_ddash]
 
     def update_state(self, time_step):
