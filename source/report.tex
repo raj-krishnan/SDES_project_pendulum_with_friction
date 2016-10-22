@@ -5,6 +5,10 @@ footskip=.25in]{geometry}
 
 \usepackage[backend=bibtex,citestyle=ieee,alldates=iso8601]{biblatex}
 \usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amsfonts,amssymb,amsthm}
+\usepackage{cleveref}
 \addbibresource{report.bib}
 
 \title{Pendulum with Friction}
@@ -35,21 +39,42 @@ footskip=.25in]{geometry}
           \ddot{\theta} = -\frac{g}{L}sin(\theta) - \alpha \dot{\theta}                    
   \end{equation}
 
- \section{Methodology Followed}
+\section{Methodology Followed}
 
-   The code consists of a \texttt{Oscillator} class, which is initialized with 
-   the initial state, the length of the pendulum rod/wire and the damping factor
-   $\alpha$. 
+  The code consists of a \texttt{Oscillator} class, which is initialized with 
+  the initial state, the length of the pendulum rod/wire and the damping factor
+  $\alpha$. 
 
-   We now use \texttt{odeint} in \texttt{scipy.integrate} to solve the equation 
-   for each step after computing the derivatives as follows:
+  We now use \texttt{odeint} in \texttt{scipy.integrate} to solve the equation 
+  for each step after computing the derivatives as follows:
    
-   $$\frac{dy}{dx} = \dot{\theta}$$
-   $$\frac{d^2y}{dx^2} = \ddot{\theta} 
-                       = -\frac{g}{L}sin(\theta) - \alpha \dot{\theta}$$
+  $$\frac{dy}{dx} = \dot{\theta}$$
+  $$\frac{d^2y}{dx^2} = \ddot{\theta} 
+                      = -\frac{g}{L}sin(\theta) - \alpha \dot{\theta}$$
 
-   The trajectory of the pendulum bob is now calculated and we save it's angle
-   and angular velocity.
+  The trajectory of the pendulum bob is now calculated and we save it's angle
+  and angular velocity.
+
+\section{Plots}
+  The oscillator class is now instantiated to obtain plots under various
+  scenarios. \cref{fig:plot_pendulum} contains a plot of angular displacement with time for 
+  various damping conditions
+  \begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{build/pendulum.png}
+    \caption{Plot showing the change in angular displacement with time for various damping factors}
+    \label{fig:plot_pendulum}
+  \end{figure}
+
+  
+  \cref{fig:plot_theta_relation} shows the relationship between the angular velocity of the body and its
+  angular displacement, and we can see how energy is lost due to damping.
+  \begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{build/theta_vs_theta_dash.png}
+    \caption{Plot showing the angular displacement against the angular velocity}
+    \label{fig:plot_theta_relation}
+  \end{figure}
 
 \printbibliography
 

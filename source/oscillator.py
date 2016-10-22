@@ -46,9 +46,7 @@ class Oscillator:
             self.state = initial_state
 
         y = [numpy.asarray(self.state)]
-        # y = [self.state[0]]
         for i in range(simulation_steps):
-            print("Iteration: " + str(i + 1))
             self.update_state(simulation_time / simulation_steps)
             y.append(self.state)
         return y

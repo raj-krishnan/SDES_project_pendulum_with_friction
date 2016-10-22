@@ -6,6 +6,7 @@ BIB = bibtex
 .PHONY: all view clean animations plots
 
 all : source/report.pdf
+	mkdir -p output
 	rm -f source/report.aux
 	rm -f source/report.bbl
 	rm -f source/report.blg
@@ -14,26 +15,31 @@ all : source/report.pdf
 	rm -f source/report.run.xml
 	rm -f source/report.out
 	mv source/report.pdf output/report.pdf
+	mv source/build/* output
+	rm -rf source/build/
 
 clean:
 	rm -rf output/
 
 view:
-	open output/report.pdf
+	evince output/report.pdf
 
 animations: source/time_animation.py source/coordinate_animation.py
+	mkdir -p source/build/
 	python source/coordinate_animation.py
 	python source/time_animation.py
-	mv coordinate_animation.mp4 output/
-	mv time_animation.mp4 output/
+	mv coordinate_animation.mp4 source/build/
+	mv time_animation.mp4 source/build/
 
 plots: source/plot_theta_theta_dash.py source/plot_theta_time.py
+	mkdir -p source/build/
 	python source/plot_theta_theta_dash.py
 	python source/plot_theta_time.py
-	mv pendulum.png output/
-	mv theta_vs_theta_dash.png output/
+	mv pendulum.png source/build/
+	mv theta_vs_theta_dash.png source/build/
 
-source/report.pdf : source/report.tex source/report.bbl source/report.blg
+source/report.pdf : animations plots source/report.tex source/report.bbl source/report.blg
+# source/report.pdf : source/report.tex source/report.bbl source/report.blg
 	$(CD) $(TEX) report.tex
 
 source/report.bbl source/report.blg : source/report.bib source/report.aux
