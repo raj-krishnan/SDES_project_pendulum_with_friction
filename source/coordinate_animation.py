@@ -3,7 +3,7 @@ import math
 from matplotlib import animation
 from matplotlib import pyplot as plt
 
-from oscillator.oscillator import Oscillator
+from oscillator import Oscillator
 
 fig = plt.figure()
 ax = plt.axes(xlim=(-0.1, 0.1), ylim=(-0.2, 1))

@@ -1,6 +1,6 @@
 from matplotlib import pyplot as plt
 
-from oscillator.oscillator import Oscillator
+from oscillator import Oscillator
 
 
 def plot_theta_vs_theta_dash():
@@ -20,4 +20,4 @@ plt.ylabel("Angular Velocity")
 plt.title("Angular Displacement v/s Angular Velocity")
 
 plt.savefig("theta_vs_theta_dash.png")
-plt.show()
+# plt.show()

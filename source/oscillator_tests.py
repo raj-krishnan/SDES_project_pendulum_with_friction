@@ -1,4 +1,4 @@
-from oscillator.oscillator import Oscillator
+from oscillator import Oscillator
 import unittest
 
 

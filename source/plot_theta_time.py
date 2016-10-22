@@ -3,7 +3,7 @@ import numpy
 from matplotlib import pyplot as plt
 from matplotlib import lines as mlines
 
-from oscillator.oscillator import Oscillator
+from oscillator import Oscillator
 
 
 def plot_underdamped_pendulum():
